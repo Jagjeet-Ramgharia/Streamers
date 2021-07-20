@@ -1,0 +1,42 @@
+.navbar{
+    width: 100vw;
+    font-size: 14px;
+    color: white;
+        .navbar_container{
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 70px;
+
+                .nav_left{
+                    display: flex;
+                    align-items: center;
+                        h1{
+                            margin-right: 20px;
+                            color: red;
+                            cursor: pointer;
+                           }
+                        span{
+                            margin-right: 20px;
+                            cursor: pointer;
+                        }   
+                }
+                .nav_right{
+                    display: flex;
+                    align-items: center;
+                        .user_img{
+                            height: 32px;
+                            width: 32px;
+                            object-fit: cover;
+                            border-radius: 50%;
+                            cursor: pointer;
+                        }
+                        .icons{
+                            margin: 0px 15px ;
+
+                        }
+                }
+                   
+        }
+}
