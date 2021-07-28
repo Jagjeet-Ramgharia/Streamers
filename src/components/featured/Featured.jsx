@@ -1,8 +1,27 @@
 import { InfoOutlined, PlayArrow } from "@material-ui/icons";
-import React from "react";
+import axios from "../../axios";
+import React, { useEffect, useState } from "react";
 import "./featured.scss";
 
 const Featured = ({ type }) => {
+  const [content, setContent] = useState({});
+
+  useEffect(() => {
+    const getRandomMovie = async () => {
+      try {
+        const res = await axios.get(`/movie/random?type=${type}`, {
+          headers: {
+            token:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZmZkYWU4ZGU3OWEwNTE0Y2JhYTlmNSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYyNzQ1MjQ4NCwiZXhwIjoxNjI3ODg0NDg0fQ.J0sJzr-QsKscAo7-xk3vhkeB7_hpSogsf1sc0haGOSI",
+          },
+        });
+        setContent(res.data[0]);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getRandomMovie();
+  }, [type]);
   return (
     <div className="featured">
       {type && (
@@ -27,21 +46,16 @@ const Featured = ({ type }) => {
         </div>
       )}
       <img
-        src="https://stylecaster.com/wp-content/uploads/2019/03/jon-snow-3.jpg"
+        src={content.imgTitle}
         alt=""
       />
       <div className="info">
         <img
-          src="https://stylecaster.com/wp-content/uploads/2019/03/jon-snow-3.jpg"
+          src={content.imgSm}
           alt=""
         />
         <span className="desc">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged.
+        {content.desc}
         </span>
         <div className="buttons">
           <button className="play">

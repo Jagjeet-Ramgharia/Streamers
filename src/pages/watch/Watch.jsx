@@ -1,15 +1,20 @@
 import React from 'react';
 import './watch.scss';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import { Link, useLocation } from 'react-router-dom';
 
 const Watch = () => {
+    const location = useLocation()
+    const movie = location.movie;
     return (
         <div className="watch">
+        <Link to="/">
         <div className="back">
             <ArrowBackIcon/>
             Home
         </div>
-        <video className="video" autoPlay progress controls src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"/>    
+        </Link>
+        <video className="video" autoPlay progress controls src={movie.video}/>    
         </div>
     )
 }
