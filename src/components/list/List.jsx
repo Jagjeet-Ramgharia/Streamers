@@ -6,7 +6,7 @@ import React, { useRef, useState } from "react";
 import ListItem from "../listItem/ListItem";
 import "./list.scss";
 
-const List = () => {
+const List = ({list}) => {
   const listRef = useRef();
   const [slideNumber, setSlideNumber] = useState(0);
   const [isMoved, setIsMoved] = useState(false);
@@ -25,7 +25,7 @@ const List = () => {
   };
   return (
     <div className="list">
-      <span className="list_title">Continue to Watch..</span>
+      <span className="list_title">{list.title}</span>
       <div className="wrapper">
         <ArrowBackIosOutlined
           className="slider_arrow left"
@@ -33,12 +33,14 @@ const List = () => {
           style={{display : !isMoved &&"none"}}
         />
         <div className="container" ref={listRef}>
-          <ListItem />
-          <ListItem />
-          <ListItem />
-          <ListItem />
-          <ListItem />
-
+          {list.content.map((item,index)=>{
+            return(
+              <>
+              <ListItem item={item} key={index}/>
+              </>
+            )
+          })}
+         
         </div>
         <ArrowForwardIosOutlined
           className="slider_arrow right"

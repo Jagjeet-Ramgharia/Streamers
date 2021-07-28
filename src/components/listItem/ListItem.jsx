@@ -7,7 +7,7 @@ import {
 import React, { useState } from "react";
 import "./listitem.scss";
 
-const ListItem = () => {
+const ListItem = ({item,key}) => {
   const [isHovered, setIsHovered] = useState(false);
   
   return (
@@ -22,6 +22,7 @@ const ListItem = () => {
       />
       {isHovered && (
         <>
+          {/* <video src={item.trailer} autoPlay={true} loop/> */}
           <div className="item_info">
             <div className="icons">
               <PlayArrow className="icon"/>
@@ -31,7 +32,7 @@ const ListItem = () => {
             </div>
             <div className="item_info_top">
               <span>1 hour 20 mins</span>
-              <span className="limit">+18</span>
+              <span className="limit">+{item.limit}</span>
               <span>1999</span>
             </div>
             <div className="desc">
