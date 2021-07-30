@@ -1,3 +1,4 @@
+@import '../../App.scss';
 .navbar{
     width: 100%;
     font-size: 14px;
@@ -24,14 +25,26 @@
                             margin-right: 20px;
                             color: red;
                             cursor: pointer;
+                            text-transform: uppercase;
+
+                            @include mobile{
+                                display: none;
+                            }
                            }
                         span{
-                            margin-right: 20px;
+                            margin-right: 10px;
                             font-size: 18px;
                             cursor: pointer;
-                            // &:hover{
-                            //     color: black;
-                            // }
+                            
+                            @include tablet{
+                                display: none;
+                            }
+
+                            &.navbarmainLinks{
+                                @include tablet{
+                                    display: block;
+                                } 
+                            }
                         }   
                 }
                 .nav_right{

@@ -10,6 +10,7 @@ const List = ({list}) => {
   const listRef = useRef();
   const [slideNumber, setSlideNumber] = useState(0);
   const [isMoved, setIsMoved] = useState(false);
+  const [clickLimit,setClickLimit] = useState(window.innerWidth / 230)
   const handleScrool = (direction) => {
     setIsMoved(true);
     let distance = listRef.current.getBoundingClientRect().x - 50;
@@ -17,7 +18,7 @@ const List = ({list}) => {
       listRef.current.style.transform = `translateX(${230 + distance}px)`;
       setSlideNumber(slideNumber - 1);
     }
-    if (direction === "right" && slideNumber < 5) {
+    if (direction === "right" && slideNumber < 10 - clickLimit) {
       listRef.current.style.transform = `translateX(${-230 + distance}px)`;
       setSlideNumber(slideNumber + 1);
     }

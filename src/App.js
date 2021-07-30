@@ -9,8 +9,11 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
+import { useContext } from "react";
+import {AuthContext} from './context/authContext/AuthContext'
 
 function App() {
+  // const {user} = useContext(AuthContext);
   const user = true;
   return (
     <div className="App">
@@ -28,7 +31,7 @@ function App() {
           {user && (
             <>
               <Route path="/movies">
-                <Home type="movies" />
+                <Home type="movie"/>
               </Route>
               <Route path="/series">
                 <Home type="series" />
